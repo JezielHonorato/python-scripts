@@ -18,3 +18,8 @@ Instale com:
 ```bash
 pip install -r requirements.txt
 ```
+## [`web_scrapping`](web_scrapping/web_scrapping.py)
+
+Script criado em 2021 para visualizar automaticamente as notas do SUAP.
+
+Criei esse codigo em 2021 para por em pratica o que aprendi em python nas aulas de algoritimo do IFRN. Nos primeiros commits, ainda não sabia utilizar o .env e acabei salvando no github as minhas credênciais do SUAP. O codigo oje no repositorio esta foi adaptado para melhoress praticas porem sem perder sua ideia original.
