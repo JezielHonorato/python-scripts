@@ -29,7 +29,7 @@ Criei esse código em 2021 para por em prática o que aprendi em python nas aula
 
 - [`bs4`](https://pypi.org/project/beautifulsoup4/): para retirar informações de uma pagina web.
 - [`selenium`](https://selenium-python.readthedocs.io/): para automatizar a interação com sites dinamicos.
-  - [`pandas`](https://pandas.pydata.org/getting_started.html): usado para criar a planilha com as notas.
+- [`pandas`](https://pandas.pydata.org/getting_started.html): usado para criar a planilha com as notas.
 
 Instale com:
 
