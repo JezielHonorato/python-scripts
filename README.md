@@ -23,13 +23,13 @@ pip install -r requirements.txt
 
 Script criado em 2021 para visualizar automaticamente as notas do SUAP.
 
-Criei esse codigo em 2021 para por em pratica o que aprendi em python nas aulas de algoritimo do IFRN. Nos primeiros commits, ainda não sabia utilizar o .env e acabei salvando no github as minhas credênciais do SUAP. O codigo oje no repositorio esta foi adaptado para melhoress praticas porem sem perder sua ideia original.
+Criei esse código em 2021 para por em prática o que aprendi em python nas aulas de algorítimo do IFRN. Nos primeiros commits, ainda não sabia utilizar o .env e acabei salvando no github as minhas credênciais do SUAP. O código que hoje está no repositorio foi adaptado para melhores práticas porém sem perder sua ideia original.
 
 ### Requisitos:
 
 - [`bs4`](https://pypi.org/project/beautifulsoup4/): para retirar informações de uma pagina web.
 - [`selenium`](https://selenium-python.readthedocs.io/): para automatizar a interação com sites dinamicos.
-- [`pandas`](https://pandas.pydata.org/getting_started.html): para automatizar a interação com sites dinamicos.
+- [`pandas`](https://pandas.pydata.org/getting_started.html): usado para criar a planilha com as notas.
 
 Instale com:
 
