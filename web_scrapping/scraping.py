@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -6,6 +7,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import pandas as pd
 
+load_dotenv() #Variaveis salvas em .env ignorado.
 MATRICULA = os.getenv("MATRICULA")
 SENHA = os.getenv("SENHA")
 
