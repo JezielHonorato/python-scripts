@@ -2,6 +2,13 @@
 
 Scripts simples desenvolvidos em Python para executar tarefas genéricas, específicas ou apenas testar minhas habilidades.
 
+Instale os requerimentos de qualquer diretório com:
+
+```bash
+pip install -r requirements.txt
+```
+
+
 ## [`delete_repositories`](delete_repositories/delete_repositories.py)
 
 Script criado para deletar todos os repositórios do GitHub de forma automatizada.
@@ -13,11 +20,15 @@ Meu GitHub estava ficando bagunçado após anos adicionando projetos sem me preo
 - [`requests`](https://pypi.org/project/requests/): para fazer requisições HTTP à API do GitHub.
 - [`python-dotenv`](https://pypi.org/project/python-dotenv/): para carregar variáveis de ambiente do arquivo `.env`.
 
-Instale com:
+## [`snake_game`](snake_game/snake_game.py)
 
-```bash
-pip install -r requirements.txt
-```
+Uma tentativa de entender como funciona a criação de jogos no python. Também foi a minha primeira experiência com o pygame e interfaces gráficas no python.
+
+### Requisitos:
+
+- [`bs4`](https://pypi.org/project/beautifulsoup4/): para retirar informações de uma pagina web.
+- [`selenium`](https://selenium-python.readthedocs.io/): para automatizar a interação com sites dinamicos.
+- [`pandas`](https://pandas.pydata.org/getting_started.html): usado para criar a planilha com as notas.
 
 ## [`web_scrapping`](web_scrapping/web_scrapping.py)
 
@@ -27,12 +38,4 @@ Criei esse código em 2021 para por em prática o que aprendi em python nas aula
 
 ### Requisitos:
 
-- [`bs4`](https://pypi.org/project/beautifulsoup4/): para retirar informações de uma pagina web.
-- [`selenium`](https://selenium-python.readthedocs.io/): para automatizar a interação com sites dinamicos.
-- [`pandas`](https://pandas.pydata.org/getting_started.html): usado para criar a planilha com as notas.
-
-Instale com:
-
-```bash
-pip install -r requirements.txt
-```
+- [`pygame`](https://www.pygame.org/docs/): usado para criação de jogos no python.
