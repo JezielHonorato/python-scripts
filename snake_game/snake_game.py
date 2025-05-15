@@ -13,10 +13,10 @@ ticks = pygame.time.Clock()
 
 #* Músicas
 
-som_comer = pygame.mixer.Sound('./music/comer.wav') # som precisa sem .wav
-som_perder = pygame.mixer.Sound('./music/perder.wav')
+som_comer = pygame.mixer.Sound('./music/eat.wav') # som precisa ser .wav
+som_perder = pygame.mixer.Sound('./music/lose.wav')
 pygame.mixer.music.set_volume(0.02)
-musica_de_fundo = pygame.mixer.music.load('./music/musica_de_fundo.mp3') #apenas musica de fundo é .mp3
+musica_de_fundo = pygame.mixer.music.load('./music/background_music.mp3') #apenas musica de fundo é .mp3
 pygame.mixer.music.play(-1)
 
 #* Cores
