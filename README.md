@@ -7,6 +7,10 @@ Instale os requerimentos de qualquer diretório com:
 ```bash
 pip install -r requirements.txt
 ```
+## [`calculadora`](calculadora/calculadora.py)
+
+Calculadora em python.
+
 
 ## [`delete_repositories`](delete_repositories/delete_repositories.py)
 
