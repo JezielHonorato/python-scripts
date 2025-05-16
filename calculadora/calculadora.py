@@ -12,16 +12,21 @@ def divisao(x, y):
     return "Erro: Divisão por zero"
   return x / y
 
+def potenciacao(x, y):
+  return x ** y
+
+
 def menu():
   print("Escolha a operação:")
   print("1 - Soma")
   print("2 - Subtração")
   print("3 - Multiplicação")
   print("4 - Divisão")
+  print("5 - Potenciação")
 
 menu()
 
-op = input("Digite sua opção (1/2/3/4): ")
+op = int(input("Digite sua opção (1/2/3/4/5): "))
 
 try:
   a = float(input("Digite o primeiro número: "))
@@ -30,13 +35,16 @@ except ValueError:
   print("Erro: Entrada inválida")
   exit()
 
-if op == '1':
-  print("Resultado:", soma(a, b))
-elif op == '2':
-  print("Resultado:", subtracao(a, b))
-elif op == '3':
-  print("Resultado:", multiplicacao(a, b))
-elif op == '4':
-  print("Resultado:", divisao(a, b))
-else:
-  print("Opção inválida")
+match op:
+  case 1:
+    print("Resultado:", soma(a, b))
+  case 2:
+    print("Resultado:", subtracao(a, b))
+  case 3:
+    print("Resultado:", multiplicacao(a, b))
+  case 4:
+    print("Resultado:", divisao(a, b))
+  case 5:
+    print("Resultado:", potenciacao(a, b))
+  case _:
+    print("Opção inválida")
