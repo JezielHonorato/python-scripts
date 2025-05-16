@@ -26,8 +26,12 @@ def menu():
 
 menu()
 
-op = int(input("Digite sua opção (1/2/3/4/5): "))
-
+try:
+  op = int(input("Digite sua opção (1/2/3/4/5): "))
+except ValueError:
+  print("Erro: Opção inválida")
+  exit()
+  
 try:
   a = float(input("Digite o primeiro número: "))
   b = float(input("Digite o segundo número: "))
