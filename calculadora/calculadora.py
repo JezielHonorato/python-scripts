@@ -1,77 +1,63 @@
-def soma(x, y):
-    return x + y
+import tkinter as tk
+from tkinter import messagebox
 
-def subtracao(x, y):
-    return x - y
-
-def multiplicacao(x, y):
-    return x * y
-
+def soma(x, y): return x + y
+def subtracao(x, y): return x - y
+def multiplicacao(x, y): return x * y
 def divisao(x, y):
     if y == 0:
         return "Erro: Divisão por zero"
     return x / y
-
-def potenciacao(x, y):
-    return x ** y
-
+def potenciacao(x, y): return x ** y
 def radiciacao(x, y):
     if y == 0:
         return "Erro: Radiciação com expoente zero"
     return x ** (1 / y)
 
-def menu():
-    print("\n--- CALCULADORA ---")
-    print("1 - Soma: A + B")
-    print("2 - Subtração: A - B")
-    print("3 - Multiplicação: A * B")
-    print("4 - Divisão: A / B")
-    print("5 - Potenciação: A ^ B")
-    print("6 - Radiciação: A ^ (1/B)")
-    print("0 - Sair")
+def calcular(op):
+    try:
+        a = float(entry1.get())
+        b = float(entry2.get())
+    except ValueError:
+        messagebox.showerror("Erro", "Digite números válidos")
+        return
 
-def ler_numero(mensagem):
-    while True:
-        try:
-            return float(input(mensagem))
-        except ValueError:
-            print("Erro: Entrada inválida. Digite um número.")
+    match op:
+        case 'soma': result = soma(a, b)
+        case 'subtracao': result = subtracao(a, b)
+        case 'multiplicacao': result = multiplicacao(a, b)
+        case 'divisao': result = divisao(a, b)
+        case 'potenciacao': result = potenciacao(a, b)
+        case 'radiciacao': result = radiciacao(a, b)
 
-def main():
-    while True:
-        menu()
-        try:
-            op = int(input("Escolha a operação (0-6): "))
-        except ValueError:
-            print("Erro: Digite um número entre 0 e 6.")
-            continue
+    resultado_var.set(f"Resultado: {result}")
 
-        if op == 0:
-            print("Encerrando a calculadora. Até logo!")
-            break
+# Interface gráfica
+janela = tk.Tk()
+janela.title("Calculadora")
 
-        if op not in range(1, 7):
-            print("Erro: Opção inválida.")
-            continue
+tk.Label(janela, text="Número A:").grid(row=0, column=0, padx=5, pady=5)
+entry1 = tk.Entry(janela)
+entry1.grid(row=0, column=1)
 
-        a = ler_numero("Digite o primeiro número: ")
-        b = ler_numero("Digite o segundo número: ")
+tk.Label(janela, text="Número B:").grid(row=1, column=0, padx=5, pady=5)
+entry2 = tk.Entry(janela)
+entry2.grid(row=1, column=1)
 
-        match op:
-            case 1:
-                resultado = soma(a, b)
-            case 2:
-                resultado = subtracao(a, b)
-            case 3:
-                resultado = multiplicacao(a, b)
-            case 4:
-                resultado = divisao(a, b)
-            case 5:
-                resultado = potenciacao(a, b)
-            case 6:
-                resultado = radiciacao(a, b)
+# Botões das operações
+botoes = [
+    ("Soma (+)", 'soma'),
+    ("Subtração (-)", 'subtracao'),
+    ("Multiplicação (×)", 'multiplicacao'),
+    ("Divisão (÷)", 'divisao'),
+    ("Potenciação (^)", 'potenciacao'),
+    ("Radiciação (^(1/B))", 'radiciacao')
+]
 
-        print("Resultado:", resultado)
+for i, (texto, op) in enumerate(botoes, start=2):
+    tk.Button(janela, text=texto, width=20, command=lambda op=op: calcular(op)).grid(row=i, column=0, columnspan=2, pady=2)
 
-if __name__ == "__main__":
-    main()
+resultado_var = tk.StringVar()
+tk.Label(janela, textvariable=resultado_var, font=('Arial', 12, 'bold')).grid(row=8, column=0, columnspan=2, pady=10)
+
+janela.mainloop()
