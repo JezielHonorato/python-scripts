@@ -50,7 +50,26 @@ def equacao_linear(a, b):
     else:
         x = -b / a
         return f"x = {x:.4f}"
+
+def equacao_quadratica(a, b, c):
+    """
+    Resolve uma equação de segundo grau do tipo ax^2 + bx + c= 0.
+    """
+    if a == 0:
+        return equacao_linear(b, c) 
     
+    delta = (b**2) - (4*a*c)
+
+    if delta == 0:
+        x = -b / (2*a)
+        return f"Uma solução real (ou duas soluções iguais): x = {x:.4f}"
+    elif delta > 0:
+        delta = delta**(1/2)
+        x1 = (-b + delta) / (2*a)
+        x2 = (-b - delta) / (2*a)
+        return f"Duas soluções reais: x1 = {x1:.4f} e x2 = {x2:.4f}"
+    else:
+        return "Nenhuma solução real (soluções são complexas)."
 
 # Funções de Entrada e Saída do Console
 
@@ -67,6 +86,7 @@ def exibir_menu():
     print("  5 - Potenciação (a ^ b)")
     print("  6 - Radiciação (a ^ (1/b))")
     print("  7 - Equação de Primeiro Grau (ax + b = 0)")
+    print("  8 - Equação de Segundo Grau (ax^2 + bx + c = 0)")
     print("  0 - Sair")
     print("="*40)
 
@@ -100,17 +120,19 @@ def obter_opcao(limite_superior):
 def main():
     while True:
         exibir_menu()
-        opcao = obter_opcao(7)
+        opcao = obter_opcao(8)
 
         if opcao == 0:
             print("\nObrigado por usar a calculadora! Até mais!")
             break
 
-        if opcao in [1, 2, 3, 4, 5, 6, 7]:
+        if opcao in [1, 2, 3, 4, 5, 6, 7, 8]:
             print("\n--- Entrada de Números ---")
-            if opcao == 7: 
+            if opcao >= 7: 
                 num1 = obter_numero("Digite o coeficiente 'a': ")
                 num2 = obter_numero("Digite o coeficiente 'b': ")
+                if opcao == 8:
+                    num3 = obter_numero("Digite o coeficiente 'c': ")
             else:
                 num1 = obter_numero("Digite o primeiro número: ")
                 num2 = obter_numero("Digite o segundo número: ")
@@ -125,6 +147,7 @@ def main():
                 case 5: resultado = potenciacao(num1, num2)
                 case 6: resultado = radiciacao(num1, num2)
                 case 7: resultado = equacao_linear(num1, num2)
+                case 8: resultado = equacao_quadratica(num1, num2, num3)
             
             print("\n" + "-"*40)
             if isinstance(resultado, str) and "Erro:" in resultado:
