@@ -24,3 +24,9 @@ def divisao(x, y):
         i += 1
         
     return f"{i} com resto {x}"
+
+def potenciacao(x, y):
+    for i in range(y):
+        for i in range(y):
+            total += x
+    return total
