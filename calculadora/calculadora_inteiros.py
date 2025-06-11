@@ -8,7 +8,7 @@ def subtracao(x, y):
 
 def multiplicacao(x, y):
     total = 0
-    
+
     for i in range(y):
         total += x
         
@@ -26,6 +26,9 @@ def divisao(x, y):
     return f"{i} com resto {x}"
 
 def potenciacao(x, y):
+    if x == 0 and y == 0:
+        return "Erro: 0^0 é uma forma indeterminada."
+
     for i in range(y):
         for i in range(y):
             total += x
