@@ -33,3 +33,12 @@ def potenciacao(x, y):
         for i in range(y):
             total += x
     return total
+
+def raiz_quadrada(x):
+    if x < 0:
+        return "Erro: A raiz quadrada não pode ser negativa"
+    
+    i = 0
+    while i <= x:
+        if (multiplicacao(i, i) == x):
+            return i
