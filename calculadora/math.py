@@ -87,9 +87,7 @@ def equacao_linear(a, b):
         return f"x = {x:.4f}"
 
 def equacao_quadratica(a, b, c):
-    """
-    Resolve uma equação de segundo grau do tipo ax^2 + bx + c= 0.
-    """
+    """Resolve uma equação de segundo grau do tipo ax^2 + bx + c= 0"""
     if a == 0:
         return equacao_linear(b, c) 
     
