@@ -1,4 +1,4 @@
-# Operações matemticas
+# Operações matemáticas
 
 def soma(x, y):
     """Soma de dois números"""
@@ -16,7 +16,7 @@ def multiplicacao(x, y):
     """Produto de dois números"""
     return x * y
 
-def multiplicacap_soma(x, y):
+def multiplicacao_soma(x, y):
     """Representação da multiplicação como repetidas somas"""
     total = 0
     for i in range(y):
@@ -48,7 +48,7 @@ def potenciacao(x, y):
         return "Erro: 0^0 é uma forma indeterminada."
     return x ** y
 
-def potenciacao(x, y):
+def potenciacao_multiplicacao(x, y):
     """Representação da potenciação como repetidas multiplicações"""
     if x == 0 and y == 0:
         return "Erro: 0^0 é uma forma indeterminada."
@@ -66,7 +66,7 @@ def radiciacao(x, y):
         return "Erro: Raiz de número negativo com índice par não é um número real."
     return x ** (1 / y)
 
-def raiz_quadrada(x):
+def raiz_quadrada_exata(x):
     if x < 0:
         return "Erro: A raiz quadrada não pode ser negativa"
     
