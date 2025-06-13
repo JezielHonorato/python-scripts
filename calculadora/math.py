@@ -103,3 +103,12 @@ def equacao_quadratica(a, b, c):
         return f"Duas soluções reais: x1 = {x1:.4f} e x2 = {x2:.4f}"
     else:
         return "Nenhuma solução real (soluções são complexas)."
+
+def fatorial(x):
+    """Fatorial de x"""
+    total = 1
+    while x > 0:
+        total *= x
+        x -= 1
+        
+    print(total)
