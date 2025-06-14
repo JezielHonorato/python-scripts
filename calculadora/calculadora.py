@@ -1,16 +1,20 @@
 # Operações Matemáticas
 
+
 def soma(x, y):
     """Calcula a soma de dois números."""
     return x + y
+
 
 def subtracao(x, y):
     """Calcula a subtração de dois números."""
     return x - y
 
+
 def multiplicacao(x, y):
     """Calcula o produto de dois números."""
     return x * y
+
 
 def divisao(x, y):
     """
@@ -20,13 +24,15 @@ def divisao(x, y):
         return "Erro: Divisão por zero não é permitida."
     return x / y
 
+
 def potenciacao(x, y):
     """
     Calcula x elevado à potência y.
     """
     if x == 0 and y == 0:
         return "Erro: 0^0 é uma forma indeterminada."
-    return x ** y
+    return x**y
+
 
 def radiciacao(x, y):
     """
@@ -37,6 +43,7 @@ def radiciacao(x, y):
     if x < 0 and y % 2 == 0:
         return "Erro: Raiz de número negativo com índice par não é um número real."
     return x ** (1 / y)
+
 
 def equacao_linear(a, b):
     """
@@ -51,33 +58,36 @@ def equacao_linear(a, b):
         x = -b / a
         return f"x = {x:.4f}"
 
+
 def equacao_quadratica(a, b, c):
     """
     Resolve uma equação de segundo grau do tipo ax^2 + bx + c= 0.
     """
     if a == 0:
-        return equacao_linear(b, c) 
-    
-    delta = (b**2) - (4*a*c)
+        return equacao_linear(b, c)
+
+    delta = (b**2) - (4 * a * c)
 
     if delta == 0:
-        x = -b / (2*a)
+        x = -b / (2 * a)
         return f"Uma solução real (ou duas soluções iguais): x = {x:.4f}"
     elif delta > 0:
-        delta = delta**(1/2)
-        x1 = (-b + delta) / (2*a)
-        x2 = (-b - delta) / (2*a)
+        delta = delta ** (1 / 2)
+        x1 = (-b + delta) / (2 * a)
+        x2 = (-b - delta) / (2 * a)
         return f"Duas soluções reais: x1 = {x1:.4f} e x2 = {x2:.4f}"
     else:
         return "Nenhuma solução real (soluções são complexas)."
 
+
 # Funções de Entrada e Saída do Console
+
 
 def exibir_menu():
     """Exibe o menu de operações para o usuário."""
-    print("\n" + "="*40)
+    print("\n" + "=" * 40)
     print("      CALCULADORA E RESOLUTOR DE EQUAÇÕES")
-    print("="*40)
+    print("=" * 40)
     print("Escolha uma opção:")
     print("  1 - Soma (a + b)")
     print("  2 - Subtração (a - b)")
@@ -88,7 +98,8 @@ def exibir_menu():
     print("  7 - Equação de Primeiro Grau (ax + b = 0)")
     print("  8 - Equação de Segundo Grau (ax^2 + bx + c = 0)")
     print("  0 - Sair")
-    print("="*40)
+    print("=" * 40)
+
 
 def obter_numero(prompt):
     """
@@ -101,6 +112,7 @@ def obter_numero(prompt):
         except ValueError:
             print("Entrada inválida. Por favor, digite um número válido.")
 
+
 def obter_opcao(limite_superior):
     """
     Solicita a opção ao usuario.
@@ -111,11 +123,15 @@ def obter_opcao(limite_superior):
             if 0 <= op <= limite_superior:
                 return op
             else:
-                print(f"Opção fora do intervalo. Por favor, digite um número entre 0 e {limite_superior}.")
+                print(
+                    f"Opção fora do intervalo. Por favor, digite um número entre 0 e {limite_superior}."
+                )
         except ValueError:
             print("Entrada inválida. Por favor, digite um número inteiro.")
 
+
 # Função main
+
 
 def main():
     while True:
@@ -128,7 +144,7 @@ def main():
 
         if opcao in [1, 2, 3, 4, 5, 6, 7, 8]:
             print("\n--- Entrada de Números ---")
-            if opcao >= 7: 
+            if opcao >= 7:
                 num1 = obter_numero("Digite o coeficiente 'a': ")
                 num2 = obter_numero("Digite o coeficiente 'b': ")
                 if opcao == 8:
@@ -136,20 +152,28 @@ def main():
             else:
                 num1 = obter_numero("Digite o primeiro número: ")
                 num2 = obter_numero("Digite o segundo número: ")
-            
+
             resultado = None
 
             match opcao:
-                case 1: resultado = soma(num1, num2)
-                case 2: resultado = subtracao(num1, num2)
-                case 3: resultado = multiplicacao(num1, num2)
-                case 4: resultado = divisao(num1, num2)
-                case 5: resultado = potenciacao(num1, num2)
-                case 6: resultado = radiciacao(num1, num2)
-                case 7: resultado = equacao_linear(num1, num2)
-                case 8: resultado = equacao_quadratica(num1, num2, num3)
-            
-            print("\n" + "-"*40)
+                case 1:
+                    resultado = soma(num1, num2)
+                case 2:
+                    resultado = subtracao(num1, num2)
+                case 3:
+                    resultado = multiplicacao(num1, num2)
+                case 4:
+                    resultado = divisao(num1, num2)
+                case 5:
+                    resultado = potenciacao(num1, num2)
+                case 6:
+                    resultado = radiciacao(num1, num2)
+                case 7:
+                    resultado = equacao_linear(num1, num2)
+                case 8:
+                    resultado = equacao_quadratica(num1, num2, num3)
+
+            print("\n" + "-" * 40)
             if isinstance(resultado, str) and "Erro:" in resultado:
                 print(f"ERRO: {resultado}")
             else:
