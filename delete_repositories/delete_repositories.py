@@ -2,7 +2,7 @@ import requests
 from dotenv import load_dotenv
 import os
 
-load_dotenv() #Variaveis salvas em .env ignorado.
+load_dotenv()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 USERNAME = os.getenv("USERNAME")
 
@@ -13,7 +13,7 @@ headers = {
 
 def listar_repositorios():
     repos = []
-    page = 1 # Divisao em paginas para quem possui mais de 30 repositorios
+    page = 1
     while True:
         url = f"https://api.github.com/user/repos?per_page=30&page={page}"
         response = requests.get(url, headers=headers)
