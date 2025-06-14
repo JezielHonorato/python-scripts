@@ -11,7 +11,7 @@ fundo = pygame.image.load('./image/background.jpg')
 
 ticks = pygame.time.Clock()
 
-#* Músicas
+# Músicas
 
 som_comer = pygame.mixer.Sound('./music/eat.wav') # som precisa ser .wav
 som_perder = pygame.mixer.Sound('./music/lose.wav')
@@ -19,7 +19,7 @@ pygame.mixer.music.set_volume(0.02)
 musica_de_fundo = pygame.mixer.music.load('./music/background_music.mp3') #apenas musica de fundo é .mp3
 pygame.mixer.music.play(-1)
 
-#* Cores
+# Cores
 
 cor_fundo = (255,255, 255)
 cor_cobra = (0, 255, 0)
@@ -27,13 +27,10 @@ cor_comida = (255, 0, 0)
 cor_texto = (0, 0, 0)
 
 
-#* parametros iniciais
+# parametros iniciais
 
-pixel = 20 # Tamanho de cada pixel no jogo, a cobra e a comida.
+pixel = 20
 velocidade_jogo = 10
-
-
-#* Funções
 
 def desenhar_texto(mensagem, x, y):
   fonte = pygame.font.SysFont("Arial", 20)
@@ -42,7 +39,7 @@ def desenhar_texto(mensagem, x, y):
   tela.blit(texto, text_quadro)
 
 
-def main_menu(): # Função do menu
+def main_menu():
   while True:
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
@@ -51,21 +48,17 @@ def main_menu(): # Função do menu
 
       if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-          snake_game() # ao clicar inicia o jogo
+          snake_game()
 
-    # Limpar a tela
     tela.fill(cor_fundo)
     tela.blit(fundo, (0, 0))
 
     desenhar_texto("Menu Principal", 2, 4)
     desenhar_texto("Pressione Enter para iniciar o jogo da cobrinha", 2, 2)
 
-    # Atualizar a tela
     pygame.display.flip()
 
-# Função do jogo da cobrinha
 def snake_game():
-
   def gerar_comida():
     posicao_comida_x = round(random.randrange(0, largura - pixel) / float(pixel)) * float(pixel) # Caber direito na tabela
     posicao_comida_y = round(random.randrange(0, altura - pixel) / float(pixel)) * float(pixel)
@@ -135,7 +128,6 @@ def snake_game():
         som_perder.play()
         jogando = False
 
-
     desenhar_cobra(pixel, tamanho_cobra)
     
     desenhar_texto(pontuacao - 1, 2, 10)
@@ -149,5 +141,4 @@ def snake_game():
 
     ticks.tick(velocidade_jogo)
 
-# Iniciar o menu
 main_menu()
