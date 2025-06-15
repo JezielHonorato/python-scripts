@@ -32,7 +32,11 @@ def converter_pdf(caminho_pdf, caminho_destino, formato):
         print(f"Ocorreu um erro ao salvar o arquivo de saída: {e}")
 
 
-def pecorrer_pasta(caminho_origem, caminho_destino, formato="txt"):
+def pecorrer_pasta(caminho_origem, caminho_destino, formato="md"):
+    # o formato pode ser .md ou .txt
+    total_convertidos = 0
+    total_erros = 0
+
     for pasta, subpasta, arquivo in os.walk(caminho_origem):
         for nome_arquivo in arquivo:
             if nome_arquivo.lower().endswith(".pdf"):
