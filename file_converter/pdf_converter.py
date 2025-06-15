@@ -1,10 +1,24 @@
 import pdfplumber
 from dotenv import load_dotenv
 import os
+import re
+import unicodedata
 
 load_dotenv()
 ORIGEM = os.getenv("ORIGEM")
 DESTINO = os.getenv("DESTINO")
+
+
+def formatar_nome(nome):
+    # Modos de formatação variam de acordo com o tipo de arquivo que será convertido
+    nome = nome.lower()
+    nome = unicodedata.normalize("NFKD", nome).encode("ascii", "ignore").decode("utf-8")
+    nome = re.sub(r"[^a-z0-9\s_-]", "", nome)
+    nome = nome.replace(" ", "_")
+    nome = nome.replace("_-", "-")
+    nome = nome.replace("-_", "-")
+
+    return nome
 
 
 def converter_pdf(caminho_pdf, caminho_destino, formato):
@@ -22,7 +36,8 @@ def converter_pdf(caminho_pdf, caminho_destino, formato):
         return
 
     nome_base = os.path.splitext(os.path.basename(caminho_pdf))[0]
-    nome_arquivo_saida = os.path.join(caminho_destino, f"{nome_base}.{formato}")
+    nome_base_formatado = formatar_nome(nome_base)
+    nome_arquivo_saida = os.path.join(caminho_destino, f"{nome_base_formatado}.{formato}")
 
     try:
         with open(nome_arquivo_saida, "w", encoding="utf-8") as arquivo_saida:
