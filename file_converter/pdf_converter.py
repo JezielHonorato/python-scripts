@@ -10,7 +10,7 @@ DESTINO = os.getenv("DESTINO")
 
 
 def formatar_nome(nome):
-    # Modos de formatação variam de acordo com o tipo de arquivo que será convertido
+    # Modos de foramtação variam de acordo com o tipo de arquivo que será convertido
     nome = nome.lower()
     nome = unicodedata.normalize("NFKD", nome).encode("ascii", "ignore").decode("utf-8")
     nome = re.sub(r"[^a-z0-9\s_-]", "", nome)
