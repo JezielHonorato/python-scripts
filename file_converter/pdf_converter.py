@@ -37,7 +37,9 @@ def converter_pdf(caminho_pdf, caminho_destino, formato):
 
     nome_base = os.path.splitext(os.path.basename(caminho_pdf))[0]
     nome_base_formatado = formatar_nome(nome_base)
-    nome_arquivo_saida = os.path.join(caminho_destino, f"{nome_base_formatado}.{formato}")
+    nome_arquivo_saida = os.path.join(
+        caminho_destino, f"{nome_base_formatado}.{formato}"
+    )
 
     try:
         with open(nome_arquivo_saida, "w", encoding="utf-8") as arquivo_saida:

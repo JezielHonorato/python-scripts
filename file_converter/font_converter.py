@@ -22,11 +22,12 @@ def converter_fonte(caminho_origem, caminho_destino):
         font.save(caminho_woff)
         print(f"Sucesso: Arquivo WOFF salvo em '{caminho_woff}'")
 
-        font.save(caminho_woff2, flavors=['woff2'])
+        font.save(caminho_woff2, flavors=["woff2"])
         print(f"Sucesso: Arquivo WOFF2 salvo em '{caminho_woff2}'")
 
     except Exception as e:
         print(f"Ocorreu um erro durante a conversão: {e}")
+
 
 def pecorrer_pasta(caminho_origem, caminho_destino):
     total_convertidos = 0
