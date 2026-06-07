@@ -1,24 +1,42 @@
-import os
+import sys
 import shutil
+from pathlib import Path
+
+caminho_da_pasta = Path(r"C:\Nome do Caminho da Pasta")
 
 
-def organizarArquivos(pasta):
-    pasta_organizada = os.path.join(os.getcwd(), pasta)
+def organizar_arquivos(caminho_da_pasta):
+    # .resolve() transforma qualquer caminho relativo em absoluto automaticamente.
+    pasta = Path(caminho_da_pasta).resolve()
 
-    for file in os.listdir(pasta_organizada):
-        caminho_completo = os.path.join(pasta_organizada, file)
-        if os.path.isfile(caminho_completo):
-            nome, extensao = os.path.splitext(file)
-            extensao = extensao[1:] or "sem_extensao"
-            destino = os.path.join(pasta_organizada, extensao)
+    if not pasta.is_dir():
+        print(f"Erro: A pasta '{pasta}' não é válida ou não existe.")
+        return
 
-            if not os.path.isdir(destino):
-                os.mkdir(destino)
+    print(f"Organizando arquivos em: {pasta}\n" + "-" * 30)
 
-            print(f'O arquivo "{file}" será movido para a pasta "{extensao}"')
-            shutil.move(caminho_completo, os.path.join(destino, file))
-        else:
-            print(f'"{file}" é uma pasta, ignorando.')
+    for arquivo in pasta.iterdir():
+        if arquivo.is_file():
+            # .suffix pega a extensão com o ponto.
+            extensao = arquivo.suffix[1:].lower() or "sem_extensao"
+            pasta_destino = pasta / extensao
+            pasta_destino.mkdir(exist_ok=True)
+            arquivo_destino = pasta_destino / arquivo.name
+
+            # Se o arquivo não existir no destino, move-o.
+            if not arquivo_destino.exists():
+                shutil.move(str(arquivo), str(pasta_destino))
+                print(f'Movido: "{arquivo.name}" -> pasta "{extensao}"')
+            else:
+                print(f'Ignorado (já existe no destino): "{arquivo.name}"')
 
 
-organizarArquivos("downloads")
+if __name__ == "__main__":
+    # sys.argv é uma lista com as palavras digitadas no terminal;
+    # sys.argv[0] é sempre o nome do seu script (script.py);
+    # sys.argv[1] é o primeiro parâmetro passado depois do nome.
+
+    if len(sys.argv) > 1:
+        caminho_da_pasta = sys.argv[1]
+    
+    organizar_arquivos(caminho_da_pasta)
