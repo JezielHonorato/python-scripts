@@ -5,7 +5,7 @@ from pathlib import Path
 caminho_da_pasta = Path(r"C:\Nome do Caminho da Pasta")
 
 
-def organizar_arquivos(caminho_da_pasta):
+def organizar_arquivos(caminho_da_pasta, force=False):
     # .resolve() transforma qualquer caminho relativo em absoluto automaticamente.
     pasta = Path(caminho_da_pasta).resolve()
 
@@ -28,15 +28,24 @@ def organizar_arquivos(caminho_da_pasta):
                 shutil.move(str(arquivo), str(pasta_destino))
                 print(f'Movido: "{arquivo.name}" -> pasta "{extensao}"')
             else:
-                print(f'Ignorado (já existe no destino): "{arquivo.name}"')
+                if force:
+                    novo_nome = f"{arquivo.stem}_1{arquivo.suffix}"
+                    novo_arquivo_destino = pasta_destino / novo_nome
+
+                    shutil.move(str(arquivo), str(novo_arquivo_destino))
+                    print(f'**Movido: "{arquivo.name}" -> pasta "{extensao}"')
+                else:
+                    print(f'Ignorado (já existe no destino): "{arquivo.name}"')
 
 
 if __name__ == "__main__":
-    # sys.argv é uma lista com as palavras digitadas no terminal;
-    # sys.argv[0] é sempre o nome do seu script (script.py);
-    # sys.argv[1] é o primeiro parâmetro passado depois do nome.
+    # Verifica se alguma das flags de força foi passada em qualquer posição do terminal.
+    force = "-f" in sys.argv or "--force" in sys.argv
 
-    if len(sys.argv) > 1:
-        caminho_da_pasta = sys.argv[1]
-    
-    organizar_arquivos(caminho_da_pasta)
+    # Filtra os argumentos, removendo o nome do script e as flags.
+    argumentos = [arg for arg in sys.argv[1:] if arg not in ("-f", "--force")]
+
+    if argumentos:
+        caminho_da_pasta = argumentos[0]
+
+    organizar_arquivos(caminho_da_pasta, force)
