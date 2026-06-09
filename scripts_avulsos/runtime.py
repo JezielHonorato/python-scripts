@@ -1,11 +1,9 @@
 import subprocess
 import time
 import statistics
-import os
-from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
-ORIGEM = os.getenv("ORIGEM")
+arquivo_origem = Path("C:\\Nome do Caminho do Arquivo.py")
 
 
 def medir_tempo_medio(comando, num_execucoes=5):
@@ -56,11 +54,13 @@ numero_de_execucoes = 10
 
 print("-" * 40)
 print("Iniciando medição de tempo de execução...")
-media_tempo, ultima_saida, ultimo_erro = medir_tempo_medio(ORIGEM, numero_de_execucoes)
+media_tempo, ultima_saida, ultimo_erro = medir_tempo_medio(
+    arquivo_origem, numero_de_execucoes
+)
 print("-" * 40)
 
 if media_tempo is not None:
-    print(f"\nResultados para o comando: '{ORIGEM}'")
+    print(f"\nResultados para o comando: '{arquivo_origem}'")
     print(f"Número de execuções: {numero_de_execucoes}")
     print(f"Tempo médio de execução: {media_tempo:.4f} segundos")
 
