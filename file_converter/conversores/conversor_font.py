@@ -2,9 +2,7 @@ import os
 from fontTools.ttLib import TTFont
 
 
-def _converter_fonte_para_web(
-    caminho_origem, caminho_destino
-):
+def _converter_fonte_para_web(caminho_origem, caminho_destino):
     if not os.path.exists(caminho_origem):
         print(f"Erro: O arquivo '{caminho_origem}' não foi encontrado.")
         return
@@ -40,7 +38,9 @@ def executar_conversao(caminho_origem, caminho_destino):
             except Exception:
                 total_erros += 1
         else:
-            print(f"Erro: O arquivo selecionado '{os.path.basename(caminho_origem)}' não é um arquivo .ttf.")
+            print(
+                f"Erro: O arquivo selecionado '{os.path.basename(caminho_origem)}' não é um arquivo .ttf."
+            )
             total_erros += 1
 
     elif os.path.isdir(caminho_origem):
@@ -57,7 +57,6 @@ def executar_conversao(caminho_origem, caminho_destino):
     else:
         print(f"Erro: O caminho de origem '{caminho_origem}' não existe.")
         total_erros += 1
-
 
     print("\n--- Processamento Concluído ---")
     print(f"Total de fontes convertidas com sucesso: {total_convertidos}")

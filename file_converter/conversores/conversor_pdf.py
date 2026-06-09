@@ -3,9 +3,7 @@ import pdfplumber
 from . import utils
 
 
-def _converter_pdf_para_texto(
-    caminho_pdf, caminho_destino, formato
-):
+def _converter_pdf_para_texto(caminho_pdf, caminho_destino, formato):
     if not os.path.exists(caminho_pdf):
         print(f"Erro: o arquivo '{caminho_pdf}' não foi encontrado.")
         return
@@ -33,10 +31,11 @@ def _converter_pdf_para_texto(
         print(f"Ocorreu um erro ao salvar o arquivo de saída: {e}")
         raise
 
+
 def executar_conversao(caminho_origem, caminho_destino, formato="md"):
     total_convertidos = 0
     total_erros = 0
-    
+
     if not os.path.exists(caminho_destino):
         os.makedirs(caminho_destino, exist_ok=True)
 
@@ -49,7 +48,9 @@ def executar_conversao(caminho_origem, caminho_destino, formato="md"):
             except Exception:
                 total_erros += 1
         else:
-            print(f"Erro: O arquivo selecionado '{os.path.basename(caminho_origem)}' não é um PDF.")
+            print(
+                f"Erro: O arquivo selecionado '{os.path.basename(caminho_origem)}' não é um PDF."
+            )
             total_erros += 1
 
     elif os.path.isdir(caminho_origem):
@@ -66,7 +67,6 @@ def executar_conversao(caminho_origem, caminho_destino, formato="md"):
     else:
         print(f"Erro: O caminho de origem '{caminho_origem}' não existe.")
         total_erros += 1
-
 
     print("\n--- Processamento Concluído ---")
     print(f"Total de PDFs convertidos com sucesso: {total_convertidos}")

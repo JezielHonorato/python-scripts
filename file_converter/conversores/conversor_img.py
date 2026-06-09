@@ -3,9 +3,7 @@ from PIL import Image
 from . import utils
 
 
-def _converter_imagens_para_pdf(
-    lista_imagens, caminho_saida_pdf
-):  
+def _converter_imagens_para_pdf(lista_imagens, caminho_saida_pdf):
     if not lista_imagens:
         print("Nenhuma imagem encontrada para conversão.")
         return
